@@ -1,0 +1,118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SalaryWise | Smart Salary Splitter</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>💸 SalaryWise</h1>
+    <p>Plan your salary. Control your money.</p>
+  </header>
+
+  <main>
+    <section class="panel">
+      <h2>Split Your Salary</h2>
+      <label for="salary">Monthly salary (₹)</label>
+      <input type="number" id="salary" min="1" placeholder="Enter your salary">
+
+      <label for="month">Select month</label>
+      <input type="month" id="month">
+
+      <button id="splitBtn">Split My Salary</button>
+      <button id="resetBtn" class="secondary">Reset Expenses</button>
+      <p id="message" role="status"></p>
+    </section>
+
+    <section class="summary">
+      <article class="card">
+        <span>Monthly Salary</span>
+        <h2 id="totalSalary">₹0</h2>
+      </article>
+      <article class="card">
+        <span>Total Allocated</span>
+        <h2 id="allocated">₹0</h2>
+      </article>
+      <article class="card">
+        <span>Total Spent</span>
+        <h2 id="spent">₹0</h2>
+      </article>
+      <article class="card">
+        <span>Money Remaining</span>
+        <h2 id="remaining">₹0</h2>
+      </article>
+    </section>
+
+    <section class="panel">
+      <h2>Your Budget Categories</h2>
+      <p class="muted">Edit the percentages to match your needs. Total should equal 100%.</p>
+      <div id="categories"></div>
+      <p id="allocationMessage" role="status"></p>
+      <button id="saveCategories">Save Budget</button>
+      <button id="addCategory" class="secondary">+ Add Category</button>
+    </section>
+
+    <section class="panel">
+      <h2>Add an Expense</h2>
+      <form id="expenseForm">
+        <label for="expenseName">Expense name</label>
+        <input id="expenseName" required placeholder="e.g. Groceries">
+
+        <label for="expenseAmount">Amount (₹)</label>
+        <input id="expenseAmount" type="number" min="0.01" step="0.01" required>
+
+        <label for="expenseCategory">Category</label>
+        <select id="expenseCategory" required></select>
+
+        <label for="expenseDate">Date</label>
+        <input id="expenseDate" type="date" required>
+
+        <label for="expenseNotes">Notes (optional)</label>
+        <input id="expenseNotes" placeholder="Additional details">
+
+        <button type="submit">Add Expense</button>
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>Expense History</h2>
+      <input id="search" placeholder="Search expenses...">
+      <label for="filterCategory">Filter category</label>
+      <select id="filterCategory">
+        <option value="all">All categories</option>
+      </select>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Expense</th>
+              <th>Category</th>
+              <th>Date</th>
+              <th>Amount</th>
+              <th>Action</th>
+            </tr>
+          </thead>
+          <tbody id="expenseList"></tbody>
+        </table>
+      </div>
+      <button id="exportBtn" class="secondary">Export CSV</button>
+      <button id="demoBtn" class="secondary">Load Demo Data</button>
+      <button id="clearBtn" class="danger">Delete All Data</button>
+    </section>
+
+    <section class="panel">
+      <h2>Budget Overview</h2>
+      <div id="overview"></div>
+    </section>
+  </main>
+
+  <footer>
+    <p>Your financial data is stored in this browser using localStorage.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
